@@ -1,0 +1,27 @@
+name: Build Android APK
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'manga-comic-translator-android.zip'
+      - '.github/workflows/build-apk.yml'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract project
+        run: |
+          unzip manga-comic-translator-android.zip
+          cd manga-comic-translator
+          npm install
+          npm run build
+          npx cap add android
+          npx cap sync android
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-comic-translator-debug-apk
+          path: manga-comic-translator/android/app/build/outputs/apk/debug/app-debug.apk
