@@ -2,45 +2,53 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ffffff"><title>Manga & Comic Translator</title>
-<link rel="stylesheet" href="style.css">
+<meta name="theme-color" content="#ffffff"><meta name="description" content="Manga & Comic Translator">
+<title>Manga & Comic Translator</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="browser-top">
-  <button class="browser-icon" aria-label="Início" id="homeBtn">◆</button>
-  <div class="address"><span>⌕</span><input id="addressInput" value="" placeholder="Search or type URL"><button id="goBtn">↻</button></div>
-  <button class="tab-count">1</button><button class="browser-icon" id="menuBtn" aria-label="Menu">⋮</button>
-</div>
-<main class="app">
-  <h1>Manga &amp; Comic Translator</h1>
-  <form class="search" id="searchForm"><span>⌕</span><input id="searchInput" placeholder="Search or type URL" autocomplete="off"></form>
-  <section class="section history-section"><div class="section-head"><h2>Histórico</h2><button class="link-btn" id="seeHistory">Ver tudo</button></div><div class="history-list" id="historyList"><div class="history-item"><div class="history-cover">✧</div><span>The Serpent'...</span></div></div></section>
-  <section class="section"><h2>Manga Plus</h2><div class="shelf" id="mangaShelf">
-    <button class="cover pink" data-title="Salamander"><b>サラマンダー</b><strong>Salamander</strong><small>Ch. 1</small></button>
-    <button class="cover red" data-title="Aztec Turning of Heaven"><b>アステカの天</b><strong>Aztec Turning of Heaven</strong><small>Ch. 2</small></button>
-    <button class="cover purple" data-title="Morino-san Just Won't Leave Me Be"><b>森野さん</b><strong>Morino-san Just Won't Leave Me Be</strong><small>Ch. 5</small></button>
-    <button class="cover yellow" data-title="Kindergarten"><b>幼稚園</b><strong>Kindergarten</strong><small>Ch. 1</small></button>
-  </div></section>
-  <section class="section"><h2>Bookwalker</h2><div class="shelf">
-    <button class="cover lavender" data-title="Firefly Wedding"><b>Firefly Wedding</b><strong>Firefly Wedding</strong><small>Novel</small></button>
-    <button class="cover night" data-title="Fool Night"><b>FOOL NIGHT</b><strong>Fool Night</strong><small>Vol. 1</small></button>
-    <button class="cover green" data-title="The Ancient Magus Bride"><b>魔法使いの嫁</b><strong>The Ancient Magus Bride</strong><small>Vol. 1</small></button>
-    <button class="cover cream" data-title="Author"><b>Author</b><strong>Author</strong><small>Novel</small></button>
-  </div></section>
+<header class="browser-top">
+ <button class="browser-icon" id="homeBtn" aria-label="Início">◆</button>
+ <form class="address" id="addressForm"><span>⌕</span><input id="addressInput" placeholder="Search or type URL" autocomplete="url"><button type="submit" aria-label="Ir">↻</button></form>
+ <button class="tab-count" id="tabBtn" aria-label="Abas">1</button><button class="browser-icon" id="menuBtn" aria-label="Menu">⋮</button>
+</header>
+<main class="app" id="homeView">
+ <h1>Manga &amp; Comic Translator</h1>
+ <form class="search" id="searchForm"><span>⌕</span><input id="searchInput" placeholder="Search or type URL" autocomplete="off"></form>
+ <section class="section history-section"><div class="section-head"><h2>Histórico</h2><button class="link-btn" id="seeHistory">Ver tudo</button></div><div class="history-list" id="historyList"><p class="empty-history">Sua leitura recente aparecerá aqui.</p></div></section>
+ <section class="section"><h2>Manga Plus</h2><div class="shelf" id="mangaShelf">
+  <button class="cover pink" data-title="Salamander"><b>サラマンダー</b><strong>Salamander</strong><small>Ch. 1</small></button>
+  <button class="cover red" data-title="Aztec Turning of Heaven"><b>アステカの天</b><strong>Aztec Turning of Heaven</strong><small>Ch. 2</small></button>
+  <button class="cover purple" data-title="Morino-san Just Won't Leave Me Be"><b>森野さん</b><strong>Morino-san Just Won't Leave Me Be</strong><small>Ch. 5</small></button>
+  <button class="cover yellow" data-title="Kindergarten"><b>幼稚園</b><strong>Kindergarten</strong><small>Ch. 1</small></button>
+ </div></section>
+ <section class="section"><h2>Bookwalker</h2><div class="shelf">
+  <button class="cover lavender" data-title="Firefly Wedding"><b>Firefly Wedding</b><strong>Firefly Wedding</strong><small>Novel</small></button>
+  <button class="cover night" data-title="Fool Night"><b>FOOL NIGHT</b><strong>Fool Night</strong><small>Vol. 1</small></button>
+  <button class="cover green" data-title="The Ancient Magus Bride"><b>魔法使いの嫁</b><strong>The Ancient Magus Bride</strong><small>Vol. 1</small></button>
+  <button class="cover cream" data-title="Author"><b>Author</b><strong>Author</strong><small>Novel</small></button>
+ </div></section>
 </main>
-<nav class="bottom-nav"><button id="backBtn">‹</button><button id="forwardBtn">›</button><button id="homeNav" class="active">◆</button><button id="menuNav">•••</button></nav>
+<main class="settings-view" id="settingsView" hidden>
+ <div class="settings-title"><h1>Configurações</h1><span class="points">◆ <b id="points">1961</b></span></div>
+ <section class="settings-card account"><span class="google-mark">G</span><div><b>Conta Google</b><small>Gerencie sua sessão e perfil</small></div><button class="soft-button" id="signOut">Sair</button></section>
+ <section class="settings-card action-card" id="earnPoints"><span class="home-mark green-mark">◆</span><div><b>Obter mais pontos</b><small>Assista a um vídeo curto para ganhar 200 pontos</small></div><button class="pill green-pill">Grátis</button></section>
+ <section class="settings-card action-card" id="premium"><span class="home-mark pink-mark">◆</span><div><b>Atualizar para Premium</b><small>Tradução ilimitada, sem anúncios</small></div></section>
+ <section class="settings-card field-card"><b>Idioma do Aplicativo</b><small>Escolha o idioma de exibição do aplicativo</small><select id="appLanguage"><option>Português (Brasil)</option><option>English</option><option>Español</option></select></section>
+ <section class="settings-card field-card"><b>Aparência</b><small>Escolha o modo Escuro ou Claro para o aplicativo</small><button class="choice" data-theme="dark">☾　Modo Escuro</button><button class="choice selected" data-theme="light">☼　Modo Claro <span>✓</span></button></section>
+ <section class="settings-card field-card"><b>Estilo da Fonte</b><small>Gerencie e adicione fontes personalizadas</small><div class="font-row"><select id="fontStyle"><option value="Arial">Padrão</option><option value="Georgia">Serifada</option><option value="Trebuchet MS">Arredondada</option><option value="Verdana">Verdana</option></select><button id="addFont">＋</button></div></section>
+ <section class="settings-card field-card"><b>Tradução</b><small>Preferências para leitura</small><label class="switch-row">Tradução automática <input id="settingsAuto" type="checkbox" checked></label><label class="switch-row">Bloquear anúncios <input id="settingsAds" type="checkbox" checked></label><label class="switch-row">Versão para computador <input id="desktopMode" type="checkbox"></label></section>
+</main>
+<nav class="bottom-nav"><button id="backBtn" aria-label="Voltar">‹</button><button id="forwardBtn" aria-label="Avançar">›</button><button id="homeNav" class="active" aria-label="Início">◆</button><button id="settingsNav" aria-label="Configurações">•••</button></nav>
 <div class="android-nav"><span>Ⅱ</span><span>○</span><span>‹</span><span>✣</span></div>
 <div class="shade" id="shade"></div>
 <aside class="browser-menu" id="browserMenu">
-<button>＋ <span>Nova Aba</span></button><button>◴ <span>Histórico</span></button>
-<div class="menu-divider"></div>
-<label>文A <span>Tradução Automática</span><input id="autoTranslate" type="checkbox" checked></label>
-<button class="setting" data-setting="target">◎ <span>Traduzir para</span><em>Português (Brasil)</em> ›</button>
-<button class="setting" data-setting="engine">◎ <span>Mecanismo de Tradução</span><em>Google</em> ›</button>
-<button class="setting" data-setting="size">Tт <span>Tamanho da Fonte</span><em>100%</em> ›</button>
-<button class="setting" data-setting="font">▣ <span>Estilo da Fonte</span><em>Padrão</em> ›</button>
-<div class="menu-divider"></div><label>▱ <span>Versão para computador</span><input type="checkbox"></label><label>◈ <span>Bloquear anúncios</span><input type="checkbox" checked></label>
-<div class="menu-divider"></div><button>⚙ <span>Configurações</span></button>
+ <button id="newTab">＋ <span>Nova Aba</span></button><button id="historyMenu">◴ <span>Histórico</span></button><div class="menu-divider"></div>
+ <label>文A <span>Tradução Automática</span><input id="autoTranslate" type="checkbox" checked></label>
+ <button class="setting" data-setting="target">◎ <span>Traduzir para</span><em id="targetValue">Português (Brasil)</em> ›</button>
+ <button class="setting" data-setting="engine">◎ <span>Mecanismo de Tradução</span><em id="engineValue">Google</em> ›</button>
+ <button class="setting" data-setting="size">Tт <span>Tamanho da Fonte</span><em id="sizeValue">100%</em> ›</button>
+ <button class="setting" data-setting="font">▣ <span>Estilo da Fonte</span><em id="fontValue">Padrão</em> ›</button>
+ <div class="menu-divider"></div><label>▱ <span>Versão para computador</span><input id="menuDesktop" type="checkbox"></label><label>◈ <span>Bloquear anúncios</span><input id="menuAds" type="checkbox" checked></label><div class="menu-divider"></div><button id="openSettings">⚙ <span>Configurações</span></button>
 </aside>
 <div class="toast" id="toast" role="status"></div>
 <script src="app.js"></script>
