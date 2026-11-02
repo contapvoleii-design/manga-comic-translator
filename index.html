@@ -1,61 +1,47 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Manga & Comic Translator</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff"><title>Manga & Comic Translator</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="app">
-    <header>
-      <div class="logo">漫画</div>
-      <div><h1>Manga & Comic Translator</h1><p>OCR e tradução de páginas de mangá</p></div>
-    </header>
-
-    <section class="panel">
-      <h2>1. Escolha uma imagem</h2>
-      <input id="imageInput" type="file" accept="image/*">
-      <img id="preview" alt="Prévia da página selecionada" hidden>
-      <p class="hint">Use uma imagem que você tenha direito de traduzir. Melhor resultado com texto nítido.</p>
-    </section>
-
-    <section class="panel">
-      <h2>2. Idiomas</h2>
-      <div class="fields">
-        <label>Idioma original
-          <select id="sourceLang">
-            <option value="jpn">Japonês</option>
-            <option value="eng" selected>Inglês</option>
-            <option value="kor">Coreano</option>
-            <option value="chi_sim">Chinês simplificado</option>
-          </select>
-        </label>
-        <label>Traduzir para
-          <select id="targetLang">
-            <option value="pt">Português</option>
-            <option value="en">Inglês</option>
-            <option value="es">Espanhol</option>
-          </select>
-        </label>
-      </div>
-      <button id="runBtn" disabled>Reconhecer e traduzir</button>
-      <p id="status" role="status" aria-live="polite"></p>
-    </section>
-
-    <section class="panel">
-      <h2>3. Texto reconhecido</h2>
-      <textarea id="ocrText" rows="6" placeholder="O texto detectado na imagem aparecerá aqui..."></textarea>
-    </section>
-
-    <section class="panel">
-      <h2>4. Tradução</h2>
-      <textarea id="translatedText" rows="6" placeholder="A tradução aparecerá aqui..."></textarea>
-      <button id="copyBtn" class="secondary">Copiar tradução</button>
-    </section>
-    <footer>Versão inicial • A tradução depende de serviços externos e de conexão com a internet.</footer>
-  </main>
-  <script src="app.js"></script>
-</body>
-</html>
+<div class="browser-top">
+  <button class="browser-icon" aria-label="Início" id="homeBtn">◆</button>
+  <div class="address"><span>⌕</span><input id="addressInput" value="" placeholder="Search or type URL"><button id="goBtn">↻</button></div>
+  <button class="tab-count">1</button><button class="browser-icon" id="menuBtn" aria-label="Menu">⋮</button>
+</div>
+<main class="app">
+  <h1>Manga &amp; Comic Translator</h1>
+  <form class="search" id="searchForm"><span>⌕</span><input id="searchInput" placeholder="Search or type URL" autocomplete="off"></form>
+  <section class="section history-section"><div class="section-head"><h2>Histórico</h2><button class="link-btn" id="seeHistory">Ver tudo</button></div><div class="history-list" id="historyList"><div class="history-item"><div class="history-cover">✧</div><span>The Serpent'...</span></div></div></section>
+  <section class="section"><h2>Manga Plus</h2><div class="shelf" id="mangaShelf">
+    <button class="cover pink" data-title="Salamander"><b>サラマンダー</b><strong>Salamander</strong><small>Ch. 1</small></button>
+    <button class="cover red" data-title="Aztec Turning of Heaven"><b>アステカの天</b><strong>Aztec Turning of Heaven</strong><small>Ch. 2</small></button>
+    <button class="cover purple" data-title="Morino-san Just Won't Leave Me Be"><b>森野さん</b><strong>Morino-san Just Won't Leave Me Be</strong><small>Ch. 5</small></button>
+    <button class="cover yellow" data-title="Kindergarten"><b>幼稚園</b><strong>Kindergarten</strong><small>Ch. 1</small></button>
+  </div></section>
+  <section class="section"><h2>Bookwalker</h2><div class="shelf">
+    <button class="cover lavender" data-title="Firefly Wedding"><b>Firefly Wedding</b><strong>Firefly Wedding</strong><small>Novel</small></button>
+    <button class="cover night" data-title="Fool Night"><b>FOOL NIGHT</b><strong>Fool Night</strong><small>Vol. 1</small></button>
+    <button class="cover green" data-title="The Ancient Magus Bride"><b>魔法使いの嫁</b><strong>The Ancient Magus Bride</strong><small>Vol. 1</small></button>
+    <button class="cover cream" data-title="Author"><b>Author</b><strong>Author</strong><small>Novel</small></button>
+  </div></section>
+</main>
+<nav class="bottom-nav"><button id="backBtn">‹</button><button id="forwardBtn">›</button><button id="homeNav" class="active">◆</button><button id="menuNav">•••</button></nav>
+<div class="android-nav"><span>Ⅱ</span><span>○</span><span>‹</span><span>✣</span></div>
+<div class="shade" id="shade"></div>
+<aside class="browser-menu" id="browserMenu">
+<button>＋ <span>Nova Aba</span></button><button>◴ <span>Histórico</span></button>
+<div class="menu-divider"></div>
+<label>文A <span>Tradução Automática</span><input id="autoTranslate" type="checkbox" checked></label>
+<button class="setting" data-setting="target">◎ <span>Traduzir para</span><em>Português (Brasil)</em> ›</button>
+<button class="setting" data-setting="engine">◎ <span>Mecanismo de Tradução</span><em>Google</em> ›</button>
+<button class="setting" data-setting="size">Tт <span>Tamanho da Fonte</span><em>100%</em> ›</button>
+<button class="setting" data-setting="font">▣ <span>Estilo da Fonte</span><em>Padrão</em> ›</button>
+<div class="menu-divider"></div><label>▱ <span>Versão para computador</span><input type="checkbox"></label><label>◈ <span>Bloquear anúncios</span><input type="checkbox" checked></label>
+<div class="menu-divider"></div><button>⚙ <span>Configurações</span></button>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body></html>
