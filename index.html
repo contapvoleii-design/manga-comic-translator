@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manga & Comic Translator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="logo">漫画</div>
+      <div><h1>Manga & Comic Translator</h1><p>OCR e tradução de páginas de mangá</p></div>
+    </header>
+
+    <section class="panel">
+      <h2>1. Escolha uma imagem</h2>
+      <input id="imageInput" type="file" accept="image/*">
+      <img id="preview" alt="Prévia da página selecionada" hidden>
+      <p class="hint">Use uma imagem que você tenha direito de traduzir. Melhor resultado com texto nítido.</p>
+    </section>
+
+    <section class="panel">
+      <h2>2. Idiomas</h2>
+      <div class="fields">
+        <label>Idioma original
+          <select id="sourceLang">
+            <option value="jpn">Japonês</option>
+            <option value="eng" selected>Inglês</option>
+            <option value="kor">Coreano</option>
+            <option value="chi_sim">Chinês simplificado</option>
+          </select>
+        </label>
+        <label>Traduzir para
+          <select id="targetLang">
+            <option value="pt">Português</option>
+            <option value="en">Inglês</option>
+            <option value="es">Espanhol</option>
+          </select>
+        </label>
+      </div>
+      <button id="runBtn" disabled>Reconhecer e traduzir</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>3. Texto reconhecido</h2>
+      <textarea id="ocrText" rows="6" placeholder="O texto detectado na imagem aparecerá aqui..."></textarea>
+    </section>
+
+    <section class="panel">
+      <h2>4. Tradução</h2>
+      <textarea id="translatedText" rows="6" placeholder="A tradução aparecerá aqui..."></textarea>
+      <button id="copyBtn" class="secondary">Copiar tradução</button>
+    </section>
+    <footer>Versão inicial • A tradução depende de serviços externos e de conexão com a internet.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
